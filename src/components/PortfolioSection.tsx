@@ -1,3 +1,5 @@
+import cambrianLogo from "@/assets/cambrian-logo.svg";
+
 const PortfolioSection = () => {
   const projects = [
     {
@@ -32,9 +34,13 @@ const PortfolioSection = () => {
               rel="noopener noreferrer"
               className="group block border border-border rounded-lg p-8 hover:border-muted-foreground/40 transition-colors"
             >
-              <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                {project.name}
-              </h3>
+              {project.name === "Cambrian" ? (
+                <img src={cambrianLogo} alt="Cambrian" className="h-9 mb-2" />
+              ) : (
+                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {project.name}
+                </h3>
+              )}
               <span className="inline-block text-xs text-muted-foreground border border-border rounded px-2 py-1 mb-4">
                 {project.badge}
               </span>
