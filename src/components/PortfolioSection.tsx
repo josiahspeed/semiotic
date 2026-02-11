@@ -48,7 +48,7 @@ const PortfolioSection = () => {
               {project.name === "Cambrian" ? (
                 <img src={cambrianLogo} alt="Cambrian" className="h-9 mb-2" />
               ) : project.name === "Odos" ? (
-                <img src={odosLogo} alt="Odos" className="h-9 mb-2" />
+                <img src={odosLogo} alt="Odos" className="h-14 mb-2" />
               ) : (
                 <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.name}
