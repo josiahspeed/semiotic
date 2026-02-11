@@ -1,18 +1,28 @@
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
 const Hero = () => {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const videoSrc = mounted && resolvedTheme === "light"
+    ? "/videos/light-mode-bg.mp4"
+    : "/videos/hero-bg-video.mp4";
+
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Video Background */}
       <video
+        key={videoSrc}
         autoPlay
         loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/hero-bg-video.mp4" type="video/mp4" />
+        <source src={videoSrc} type="video/mp4" />
       </video>
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-background/70 dark:bg-background/70 bg-white/40" />
 
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="max-w-4xl">
