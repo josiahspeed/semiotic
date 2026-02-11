@@ -1,20 +1,18 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import StatsSection from "@/components/StatsSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import WhyAgentiumSection from "@/components/WhyAgentiumSection";
-import FinalCTASection from "@/components/FinalCTASection";
+import AgentiumSection from "@/components/AgentiumSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import TheGraphSection from "@/components/TheGraphSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <StatsSection />
-      <FeaturesSection />
-      <WhyAgentiumSection />
-      <FinalCTASection />
+      <AgentiumSection />
+      <PortfolioSection />
+      <TheGraphSection />
       <Footer />
     </div>
   );

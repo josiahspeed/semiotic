@@ -1,114 +1,47 @@
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import agentiumLogo from "@/assets/agentium-logo.png";
-import { usePartnershipModal } from "@/hooks/usePartnershipModal";
-import { useScrollToSection } from "@/hooks/useScrollToSection";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import semioticLogo from "@/assets/semiotic-logo.svg";
 
 const Navigation = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { openModal } = usePartnershipModal();
-  const { scrollToSection } = useScrollToSection();
-
-  const handleScrollToSection = (sectionId: string) => {
-    scrollToSection(sectionId, () => setMobileMenuOpen(false));
-  };
-
-  const handlePartnerClick = () => {
-    setMobileMenuOpen(false);
-    openModal();
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-4 md:px-6 py-4">
-        <div className="bg-black/30 backdrop-blur-xl rounded-3xl md:rounded-[48px] border border-white/10 px-4 md:px-6 py-3 md:py-4 flex items-center justify-between shadow-lg">
-        <Link to="/" className="flex items-center space-x-2 md:space-x-3">
-          <img 
-            src={agentiumLogo} 
-            alt="Agentium Logo" 
-            className="w-8 h-8 md:w-11 md:h-11"
-          />
-          <span className="text-lg md:text-2xl font-bold text-white">AGENTIUM</span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-primary rounded-sm" />
+          <span className="text-lg font-bold text-foreground tracking-tight">SEMIOTIC.AI</span>
         </Link>
-        
-        <div className="hidden md:flex items-center space-x-8">
-          <button onClick={() => handleScrollToSection('how-it-works')} className="text-white/80 hover:text-white transition-colors cursor-pointer">
-            How it works
+
+        <div className="hidden md:flex items-center gap-8">
+          <button onClick={() => scrollTo("agentium")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Venture: Agentium
           </button>
-          <button onClick={() => handleScrollToSection('features')} className="text-white/80 hover:text-white transition-colors cursor-pointer">
-            Features
+          <button onClick={() => scrollTo("portfolio")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Portfolio
           </button>
-          <Link to="/documentation" className="text-white/80 hover:text-white transition-colors">
-            Documentation
-          </Link>
-          <Link to="/faqs" className="text-white/80 hover:text-white transition-colors">
-            FAQs
-          </Link>
+          <button onClick={() => scrollTo("history")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            History
+          </button>
+          <button onClick={() => scrollTo("contact")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Contact
+          </button>
         </div>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          
-          <Button 
-            size="lg" 
-            onClick={openModal}
-            className="hidden sm:flex bg-gradient-to-r from-[hsl(280,100%,50%)] to-[hsl(280,100%,30%)] hover:opacity-90 text-white font-semibold px-4 md:px-8 py-4 md:py-6 text-sm md:text-base shadow-lg shadow-purple-500/30 transition-all"
-          >
-            Partner With Us
-          </Button>
-          
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white p-2"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+        <div className="flex items-center gap-3">
+          <span className="hidden md:block text-border">|</span>
+          <a href="https://x.com/sabordesoledad" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/semiotic-ai" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
         </div>
-        </div>
-        
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-2 bg-black/95 backdrop-blur-xl rounded-3xl border border-white/10 px-6 py-6 shadow-lg">
-            <div className="flex flex-col space-y-4">
-              <button 
-                onClick={() => handleScrollToSection('how-it-works')}
-                className="text-white/80 hover:text-white transition-colors py-2 text-left"
-              >
-                How it works
-              </button>
-              <button 
-                onClick={() => handleScrollToSection('features')}
-                className="text-white/80 hover:text-white transition-colors py-2 text-left"
-              >
-                Features
-              </button>
-              <Link 
-                to="/documentation" 
-                className="text-white/80 hover:text-white transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Documentation
-              </Link>
-              <Link 
-                to="/faqs" 
-                className="text-white/80 hover:text-white transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                FAQs
-              </Link>
-              <Button 
-                size="lg" 
-                onClick={handlePartnerClick}
-                className="w-full bg-gradient-to-r from-[hsl(280,100%,50%)] to-[hsl(280,100%,30%)] hover:opacity-90 text-white font-semibold px-8 py-6 shadow-lg shadow-purple-500/30 transition-all mt-2"
-              >
-                Partner With Us
-              </Button>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );

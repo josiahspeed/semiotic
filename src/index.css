@@ -2,123 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 96%;
 
-    /* Teal primary color #287A78 */
-    --primary: 179 51% 32%;
-    --primary-foreground: 0 0% 100%;
+    /* Green accent */
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 2%;
 
-    --secondary: 200 20% 96%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 200 15% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 179 51% 32%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 142 71% 45%;
+    --accent-foreground: 0 0% 2%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 15% 90%;
-    --input: 200 15% 90%;
-    --ring: 179 51% 32%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 142 71% 45%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Code editor theme - Modern 2025 (Catppuccin-inspired) */
-    --code-bg: 240 21% 12%;
-    --code-header: 240 21% 9%;
-    --code-border: 240 17% 20%;
-    --code-text: 226 64% 88%;
-    --code-keyword: 316 72% 75%;
-    --code-string: 142 52% 70%;
-    --code-function: 217 92% 76%;
-    --code-comment: 228 20% 45%;
-    --code-variable: 35 82% 75%;
-    --code-type: 189 70% 72%;
-
-    /* Hero gradient colors - dark teal */
-    --hero-gradient-start: 190 65% 15%;
-    --hero-gradient-mid: 185 55% 22%;
-    --hero-gradient-end: 179 51% 32%;
-    
-    /* Dark section background - dark teal */
-    --dark-bg: 190 50% 12%;
-    --dark-fg: 0 0% 98%;
-
-    /* Feature card backgrounds */
-    --feature-card: 0 0% 98%;
-    --feature-card-dark: 190 45% 15%;
-
-    /* CTA button gradient - teal */
-    --cta-gradient-from: 173 100% 18%;
-    --cta-gradient-to: 168 65% 38%;
-    --cta-gradient-from-hover: 173 100% 14%;
-    --cta-gradient-to-hover: 168 65% 31%;
-
-    /* Feature accent color */
-    --feature-accent: 174 100% 33%;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 179 51% 32%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 200 15% 95%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 200 15% 90%;
-    --sidebar-ring: 179 51% 32%;
+    /* Code editor theme */
+    --code-bg: 0 0% 6%;
+    --code-header: 0 0% 4%;
+    --code-border: 0 0% 15%;
+    --code-text: 0 0% 80%;
+    --code-keyword: 142 71% 45%;
+    --code-string: 35 82% 65%;
+    --code-function: 210 70% 70%;
+    --code-comment: 0 0% 35%;
+    --code-variable: 0 0% 85%;
+    --code-type: 190 70% 65%;
   }
 
   .dark {
-    --background: 190 50% 8%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
 
-    --card: 190 45% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 190 45% 12%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 179 51% 38%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 2%;
 
-    --secondary: 190 40% 20%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 190 40% 18%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 179 51% 38%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 142 71% 45%;
+    --accent-foreground: 0 0% 2%;
 
     --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 190 40% 20%;
-    --input: 190 40% 20%;
-    --ring: 179 51% 38%;
-    
-    --sidebar-background: 190 50% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 179 51% 38%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 190 40% 18%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 190 40% 18%;
-    --sidebar-ring: 179 51% 38%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 142 71% 45%;
   }
 }
 
@@ -134,22 +91,6 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-@layer utilities {
-  .glass-button {
-    @apply bg-gradient-to-b from-white/20 to-white/10 backdrop-blur-lg border border-white/20;
-    @apply shadow-[0_8px_32px_0_rgba(0,0,0,0.1),inset_0_1px_0_0_rgba(255,255,255,0.3)];
-    @apply transition-all duration-300;
-  }
-  
-  .glass-button:hover {
-    @apply from-white/30 to-white/20;
-    @apply shadow-[0_8px_32px_0_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.4)];
-  }
-  
-  .glass-button:active {
-    @apply from-white/15 to-white/5;
+    font-family: 'JetBrains Mono', monospace;
   }
 }
