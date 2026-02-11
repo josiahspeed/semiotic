@@ -1,4 +1,5 @@
 import cambrianLogo from "@/assets/cambrian-logo.svg";
+import odosLogo from "@/assets/odos-logo.png";
 
 const PortfolioSection = () => {
   const projects = [
@@ -36,6 +37,8 @@ const PortfolioSection = () => {
             >
               {project.name === "Cambrian" ? (
                 <img src={cambrianLogo} alt="Cambrian" className="h-9 mb-2" />
+              ) : project.name === "Odos" ? (
+                <img src={odosLogo} alt="Odos" className="h-9 mb-2" />
               ) : (
                 <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.name}
