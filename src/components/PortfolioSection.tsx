@@ -43,7 +43,7 @@ const PortfolioSection = () => {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block border border-border rounded-lg p-8 hover:border-muted-foreground/40 transition-colors"
+              className="group block border border-border rounded-lg p-8 bg-background hover:border-muted-foreground/40 transition-colors"
             >
               {project.name === "Cambrian" ? (
                 <img src={cambrianLogo} alt="Cambrian" className="h-9 mb-2" />
