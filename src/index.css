@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Teal primary color #287A78 */
+    --primary: 179 51% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 20% 96%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 200 15% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 179 51% 32%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 15% 90%;
+    --input: 200 15% 90%;
+    --ring: 179 51% 32%;
+
+    --radius: 0.75rem;
+
+    /* Code editor theme - Modern 2025 (Catppuccin-inspired) */
+    --code-bg: 240 21% 12%;
+    --code-header: 240 21% 9%;
+    --code-border: 240 17% 20%;
+    --code-text: 226 64% 88%;
+    --code-keyword: 316 72% 75%;
+    --code-string: 142 52% 70%;
+    --code-function: 217 92% 76%;
+    --code-comment: 228 20% 45%;
+    --code-variable: 35 82% 75%;
+    --code-type: 189 70% 72%;
+
+    /* Hero gradient colors - dark teal */
+    --hero-gradient-start: 190 65% 15%;
+    --hero-gradient-mid: 185 55% 22%;
+    --hero-gradient-end: 179 51% 32%;
+    
+    /* Dark section background - dark teal */
+    --dark-bg: 190 50% 12%;
+    --dark-fg: 0 0% 98%;
+
+    /* Feature card backgrounds */
+    --feature-card: 0 0% 98%;
+    --feature-card-dark: 190 45% 15%;
+
+    /* CTA button gradient - teal */
+    --cta-gradient-from: 173 100% 18%;
+    --cta-gradient-to: 168 65% 38%;
+    --cta-gradient-from-hover: 173 100% 14%;
+    --cta-gradient-to-hover: 168 65% 31%;
+
+    /* Feature accent color */
+    --feature-accent: 174 100% 33%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 179 51% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 15% 95%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 200 15% 90%;
+    --sidebar-ring: 179 51% 32%;
+  }
+
+  .dark {
+    --background: 190 50% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 190 45% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 190 45% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 179 51% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 190 40% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 190 40% 18%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 179 51% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 190 40% 20%;
+    --input: 190 40% 20%;
+    --ring: 179 51% 38%;
+    
+    --sidebar-background: 190 50% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 179 51% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 190 40% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 190 40% 18%;
+    --sidebar-ring: 179 51% 38%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-padding-top: 100px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass-button {
+    @apply bg-gradient-to-b from-white/20 to-white/10 backdrop-blur-lg border border-white/20;
+    @apply shadow-[0_8px_32px_0_rgba(0,0,0,0.1),inset_0_1px_0_0_rgba(255,255,255,0.3)];
+    @apply transition-all duration-300;
+  }
+  
+  .glass-button:hover {
+    @apply from-white/30 to-white/20;
+    @apply shadow-[0_8px_32px_0_rgba(0,0,0,0.15),inset_0_1px_0_0_rgba(255,255,255,0.4)];
+  }
+  
+  .glass-button:active {
+    @apply from-white/15 to-white/5;
+  }
+}
