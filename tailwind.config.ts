@@ -9,9 +9,9 @@ export default {
       center: true,
       padding: {
         DEFAULT: "2rem",
-        lg: "4rem",
-        xl: "6rem",
-        "2xl": "8rem",
+        lg: "6rem",
+        xl: "10rem",
+        "2xl": "14rem",
       },
       screens: {
         "2xl": "1400px",
