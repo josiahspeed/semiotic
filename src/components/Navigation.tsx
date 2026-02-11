@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import semioticLogo from "@/assets/semiotic-logo.svg";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const scrollTo = (id: string) => {
@@ -30,6 +31,7 @@ const Navigation = () => {
         </div>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <span className="hidden md:block text-border">|</span>
           <a href="https://x.com/sabordesoledad" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">

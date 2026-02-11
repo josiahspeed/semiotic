@@ -48,6 +48,47 @@
     --code-type: 190 70% 65%;
   }
 
+  .light {
+    --background: 0 0% 97%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 142 71% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 142 71% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 142 71% 35%;
+
+    --code-bg: 0 0% 95%;
+    --code-header: 0 0% 92%;
+    --code-border: 0 0% 85%;
+    --code-text: 0 0% 20%;
+    --code-keyword: 142 71% 30%;
+    --code-string: 35 82% 40%;
+    --code-function: 210 70% 40%;
+    --code-comment: 0 0% 55%;
+    --code-variable: 0 0% 15%;
+    --code-type: 190 70% 35%;
+  }
+
   .dark {
     --background: 0 0% 4%;
     --foreground: 0 0% 96%;
