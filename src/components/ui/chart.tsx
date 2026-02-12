@@ -58,6 +58,28 @@ const ChartContainer = React.forwardRef<
 });
 ChartContainer.displayName = "Chart";
 
+/**
+ * Sanitize a CSS color value to prevent injection attacks.
+ * Only allows hex colors, rgb/rgba/hsl/hsla functions, and CSS named colors.
+ * @warning Only use with trusted, static configuration data.
+ */
+function sanitizeCssValue(value: string): string {
+  if (
+    /^#[0-9A-Fa-f]{3,8}$/.test(value) ||
+    /^(?:rgb|rgba|hsl|hsla)\([^)]+\)$/.test(value) ||
+    /^[a-zA-Z]+$/.test(value) ||
+    /^var\(--[a-zA-Z0-9-]+\)$/.test(value)
+  ) {
+    return value;
+  }
+  return 'transparent';
+}
+
+/**
+ * ChartStyle - Generates CSS variables for chart theming.
+ * @warning Only use with trusted, static configuration data.
+ * Do not pass user-controlled values to the config prop.
+ */
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(([_, config]) => config.theme || config.color);
 
@@ -75,7 +97,8 @@ ${prefix} [data-chart=${id}] {
 ${colorConfig
   .map(([key, itemConfig]) => {
     const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
-    return color ? `  --color-${key}: ${color};` : null;
+    const safeColor = color ? sanitizeCssValue(color) : null;
+    return safeColor ? `  --color-${key}: ${safeColor};` : null;
   })
   .join("\n")}
 }
