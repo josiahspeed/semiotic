@@ -22,9 +22,6 @@ const Navigation = () => {
           <button onClick={() => scrollTo("portfolio")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Portfolio
           </button>
-          <button onClick={() => scrollTo("history")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            History
-          </button>
           <button onClick={() => scrollTo("contact")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Contact
           </button>
