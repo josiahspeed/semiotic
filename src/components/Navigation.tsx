@@ -1,46 +1,94 @@
 import { Link } from "react-router-dom";
-import semioticLogo from "@/assets/semiotic-logo.svg";
+import { useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const scrollTo = (id: string) => {
+    setMobileOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const navLinks = [
+    { label: "Venture: Agentium", id: "agentium" },
+    { label: "Portfolio", id: "portfolio" },
+    { label: "Contact", id: "contact" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-xl border-b border-border/50">
       <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="text-lg font-bold text-foreground tracking-tight">SEMIOTIC AI</span>
+        <Link to="/" className="flex items-center gap-2 group">
+          <span className="text-lg font-bold text-foreground tracking-tight transition-colors group-hover:text-primary">
+            SEMIOTIC AI
+          </span>
         </Link>
 
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          <button onClick={() => scrollTo("agentium")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Venture: Agentium
-          </button>
-          <button onClick={() => scrollTo("portfolio")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Portfolio
-          </button>
-          <button onClick={() => scrollTo("contact")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Contact
-          </button>
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className="relative text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+            >
+              {link.label}
+            </button>
+          ))}
         </div>
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <span className="hidden md:block text-border">|</span>
-          <a href="https://x.com/semioticlabs" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+          <span className="hidden md:block text-border/50">|</span>
+          <a href="https://x.com/semioticlabs" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 hover:scale-110 transform">
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
           </a>
-          <a href="https://github.com/semiotic-ai" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+          <a href="https://github.com/semiotic-ai" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300 hover:scale-110 transform">
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
             </svg>
           </a>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden ml-2 text-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-xl border-b border-border/50"
+          >
+            <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollTo(link.id)}
+                  className="text-left text-sm text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-border/30 last:border-0"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
